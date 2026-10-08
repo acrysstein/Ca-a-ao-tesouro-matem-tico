@@ -813,39 +813,164 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =====================================================
-       ILHAS DO MAPA
-    ====================================================== */
+   /* =====================================================
+   ILHAS DO MAPA
+===================================================== */
 
-    document
-        .querySelectorAll(".ilha")
-        .forEach(ilha => {
+function configurarIlhas() {
 
-            ilha.addEventListener(
-                "click",
-                () => {
+    const ilhas = document.querySelectorAll(".ilha");
 
-                    const setor =
-                        ilha.dataset.setor;
+    console.log("Ilhas encontradas:", ilhas.length);
 
-                    iniciarSetor(setor);
+    ilhas.forEach((ilha) => {
 
-                }
-            );
+        ilha.addEventListener("click", function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            const setor = this.getAttribute("data-setor");
+
+            console.log("Ilha clicada:", setor);
+
+            if (!setor) {
+                console.error("Esta ilha não possui data-setor.");
+                return;
+            }
+
+            if (!banco[setor]) {
+                console.error(
+                    "Setor não encontrado no banco de perguntas:",
+                    setor
+                );
+                return;
+            }
+
+            iniciarSetor(setor);
 
         });
 
+    });
 
-    /* =====================================================
-       INICIALIZAÇÃO
-    ====================================================== */
+}
+
+
+/* =====================================================
+   INICIALIZAÇÃO DO JOGO
+===================================================== */
+
+function iniciarJogo() {
+
+    console.log("🎮 STEIN iniciado!");
+
+    atualizarStatus();
+    atualizarPistas();
+
+    configurarIlhas();
+
+}
+
+
+/* =====================================================
+   BOTÃO COMEÇAR
+===================================================== */
+
+btnComecar.addEventListener("click", function () {
+
+    console.log("Botão COMEÇAR clicado!");
+
+    mostrarTela(telaMapa);
+
+});
+
+
+/* =====================================================
+   VOLTAR PARA INÍCIO
+===================================================== */
+
+btnVoltarInicio.addEventListener("click", function () {
+
+    mostrarTela(telaInicial);
+
+});
+
+
+/* =====================================================
+   VOLTAR PARA O MAPA
+===================================================== */
+
+btnVoltarMapa.addEventListener("click", function () {
+
+    mostrarTela(telaMapa);
+
+});
+
+
+/* =====================================================
+   PRÓXIMA PERGUNTA
+===================================================== */
+
+btnProxima.addEventListener("click", function () {
+
+    proximaPergunta();
+
+});
+
+
+/* =====================================================
+   CONTINUAR DEPOIS DA PISTA
+===================================================== */
+
+btnContinuarPista.addEventListener("click", function () {
+
+    continuarPista();
+
+});
+
+
+/* =====================================================
+   JOGAR NOVAMENTE
+===================================================== */
+
+btnJogarNovamente.addEventListener("click", function () {
+
+    pontuacao = 0;
+
+    vidas = 3;
+
+    acertos = 0;
+
+    erros = 0;
+
+    pistasDesbloqueadas = 0;
+
+    setoresConcluidos = [];
+
+    setorAtual = null;
 
     atualizarStatus();
 
     atualizarPistas();
 
-    console.log(
-        "🗺️ STEIN — mapa do tesouro carregado!"
-    );
+    mostrarTela(telaMapa);
 
 });
+
+
+/* =====================================================
+   ESCOLHER SETOR
+===================================================== */
+
+btnEscolherSetor.addEventListener("click", function () {
+
+    mostrarTela(telaMapa);
+
+});
+
+
+/* =====================================================
+   INICIAR
+===================================================== */
+
+iniciarJogo();
