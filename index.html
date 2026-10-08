@@ -1,220 +1,191 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>STEIN - Caça ao Tesouro</title>
+    <title>STEIN - O Tesouro Perdido</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Luckiest+Guy&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- ELEMENTOS DECORATIVOS -->
+    <div class="floating-symbols">
+        <span>+</span>
+        <span>−</span>
+        <span>×</span>
+        <span>÷</span>
+        <span>=</span>
+        <span>π</span>
+        <span>★</span>
+    </div>
+
     <!-- TELA INICIAL -->
-    <section id="inicio" class="tela ativa">
+    <section id="startScreen" class="screen active">
 
-        <div class="gato">🐱</div>
+        <div class="start-card">
 
-        <div class="logo">STEIN</div>
+            <div class="logo-area">
+                <div class="logo-icon">🗺️</div>
 
-        <h1>🗺️ A Caça ao Tesouro</h1>
+                <h1>STEIN</h1>
 
-        <p>
-            Resolva os desafios matemáticos<br>
-            e encontre o tesouro perdido!
-        </p>
+                <p class="subtitle">O Tesouro Perdido</p>
+            </div>
 
-        <button id="comecar" class="botao">
-            🧭 COMEÇAR
-        </button>
+            <div class="pirate">
+                🏴‍☠️
+            </div>
+
+            <p class="intro">
+                Uma grande aventura matemática espera por você!
+                Explore o mapa, responda aos desafios e descubra
+                onde está escondido o tesouro.
+            </p>
+
+            <button id="startButton" class="main-button">
+                🚀 COMEÇAR A AVENTURA
+            </button>
+
+            <p class="small-text">
+                Prepare sua mente, aventureiro!
+            </p>
+
+        </div>
 
     </section>
 
 
     <!-- MAPA -->
-    <section id="mapa" class="tela">
+    <section id="mapScreen" class="screen">
 
-        <header>
+        <header class="game-header">
 
-            <h1>🗺️ MAPA DO TESOURO</h1>
+            <div class="brand">
+                <span>🗺️</span>
+                <strong>STEIN</strong>
+            </div>
 
-            <p>
-                Escolha uma região para começar sua aventura!
-            </p>
+            <div class="stats">
 
-            <div class="status">
-                💎 Pistas: <span id="numero-pistas">0</span>/8
+                <div class="stat">
+                    ⭐ <span id="score">0</span>
+                </div>
+
+                <div class="stat">
+                    ❤️ <span id="lives">5</span>
+                </div>
+
             </div>
 
         </header>
 
 
-        <main class="mapa">
+        <main class="map-container">
 
-            <div class="ilha ilha1">
-                <button class="botao-ilha" data-setor="adicao">
-                    ➕
-                    <strong>Adição</strong>
-                    <small>15 perguntas</small>
-                </button>
+            <div class="map-title">
+
+                <h2>🧭 MAPA DO TESOURO</h2>
+
+                <p>
+                    Complete os setores para encontrar novas pistas!
+                </p>
+
             </div>
 
 
-            <div class="ilha ilha2">
-                <button class="botao-ilha" data-setor="subtracao">
-                    ➖
-                    <strong>Subtração</strong>
-                    <small>15 perguntas</small>
-                </button>
-            </div>
+            <div class="treasure-map">
+
+                <!-- CAMINHO -->
+                <div class="map-path path-1"></div>
+                <div class="map-path path-2"></div>
+                <div class="map-path path-3"></div>
+                <div class="map-path path-4"></div>
 
 
-            <div class="ilha ilha3">
-                <button class="botao-ilha" data-setor="multiplicacao">
-                    ✖️
-                    <strong>Multiplicação</strong>
-                    <small>15 perguntas</small>
-                </button>
-            </div>
-
-
-            <div class="ilha ilha4">
-                <button class="botao-ilha" data-setor="divisao">
-                    ➗
-                    <strong>Divisão</strong>
-                    <small>15 perguntas</small>
-                </button>
-            </div>
-
-
-            <div class="ilha ilha5">
-                <button class="botao-ilha" data-setor="fracoes">
-                    🍕
-                    <strong>Frações</strong>
-                    <small>15 perguntas</small>
-                </button>
-            </div>
-
-
-            <div class="ilha ilha6">
-                <button class="botao-ilha" data-setor="decimais">
-                    🔢
-                    <strong>Decimais</strong>
-                    <small>15 perguntas</small>
-                </button>
-            </div>
-
-
-            <div class="ilha ilha7">
-                <button class="botao-ilha" data-setor="porcentagem">
-                    💯
-                    <strong>Porcentagem</strong>
-                    <small>15 perguntas</small>
-                </button>
-            </div>
-
-
-            <div class="ilha ilha8">
-                <button class="botao-ilha" data-setor="geometria">
-                    📐
-                    <strong>Geometria</strong>
-                    <small>15 perguntas</small>
-                </button>
-            </div>
-
-
-            <div class="bau">
-                💎
-                <span>TESOURO</span>
-            </div>
-
-
-            <div class="gato mapa-gato">
-                🐱
-            </div>
-
-        </main>
-
-    </section>
-
-
-    <!-- JOGO -->
-    <section id="jogo" class="tela">
-
-        <header class="cabecalho-jogo">
-
-            <button id="voltar-mapa" class="botao-pequeno">
-                🗺️ Mapa
-            </button>
-
-            <div>
-                ⭐ <span id="pontos">0</span> XP
-            </div>
-
-            <div>
-                <span id="vidas">❤️❤️❤️</span>
-            </div>
-
-        </header>
-
-
-        <div class="progresso">
-
-            <span>
-                Pergunta
-                <strong id="numero-pergunta">1</strong>
-                / 15
-            </span>
-
-            <div class="barra">
-                <div id="barra-progresso"></div>
-            </div>
-
-        </div>
-
-
-        <main class="area-jogo">
-
-            <!-- símbolos -->
-            <span class="simbolo simbolo1">+</span>
-            <span class="simbolo simbolo2">×</span>
-            <span class="simbolo simbolo3">÷</span>
-            <span class="simbolo simbolo4">−</span>
-
-
-            <div class="cartao">
-
-                <div id="categoria">
-                    ➕ Adição
-                </div>
-
-                <div class="pergaminho">
-                    📜
-                </div>
-
-                <h2 id="pergunta">
-                    Pergunta
-                </h2>
-
-                <div id="alternativas"></div>
-
-                <div id="feedback"></div>
-
+                <!-- SETOR 1 -->
                 <button
-                    id="proxima"
-                    class="botao"
-                    style="display:none;"
-                >
-                    🔎 PRÓXIMA
+                    class="map-point unlocked"
+                    id="sector1"
+                    data-sector="addition">
+
+                    <span class="point-icon">➕</span>
+                    <span class="point-name">ADDIÇÃO</span>
+                    <span class="point-status">▶ JOGAR</span>
+
                 </button>
 
-            </div>
+
+                <!-- SETOR 2 -->
+                <button
+                    class="map-point locked"
+                    id="sector2"
+                    data-sector="subtraction">
+
+                    <span class="point-icon">➖</span>
+                    <span class="point-name">SUBTRAÇÃO</span>
+                    <span class="point-status">🔒 BLOQUEADO</span>
+
+                </button>
 
 
-            <div class="gato gato-pergunta">
-                🐱
+                <!-- SETOR 3 -->
+                <button
+                    class="map-point locked"
+                    id="sector3"
+                    data-sector="multiplication">
+
+                    <span class="point-icon">✖️</span>
+                    <span class="point-name">MULTIPLICAÇÃO</span>
+                    <span class="point-status">🔒 BLOQUEADO</span>
+
+                </button>
+
+
+                <!-- SETOR 4 -->
+                <button
+                    class="map-point locked"
+                    id="sector4"
+                    data-sector="division">
+
+                    <span class="point-icon">➗</span>
+                    <span class="point-name">DIVISÃO</span>
+                    <span class="point-status">🔒 BLOQUEADO</span>
+
+                </button>
+
+
+                <!-- SETOR 5 -->
+                <button
+                    class="map-point locked"
+                    id="sector5"
+                    data-sector="fractions">
+
+                    <span class="point-icon">🍕</span>
+                    <span class="point-name">FRAÇÕES</span>
+                    <span class="point-status">🔒 BLOQUEADO</span>
+
+                </button>
+
+
+                <!-- TESOURO -->
+                <div id="treasure" class="treasure">
+                    💰
+                    <span>TESOURO</span>
+                </div>
+
+
+                <!-- GATO -->
+                <div class="map-cat">
+                    🐱
+                </div>
+
             </div>
 
         </main>
@@ -222,36 +193,107 @@
     </section>
 
 
-    <!-- PISTA -->
-    <section id="pista" class="tela">
+    <!-- TELA DE PERGUNTAS -->
+    <section id="quizScreen" class="screen">
 
-        <div class="gato gato-pista">
-            🐱
-        </div>
+        <header class="game-header">
 
-        <div class="pergaminho-grande">
+            <button id="backMapButton" class="back-button">
+                ← Mapa
+            </button>
 
-            <h1>
-                🔓 NOVA PISTA!
-            </h1>
+            <div class="quiz-info">
 
-            <div class="numero-pista">
-                PISTA <span id="pista-numero">1</span>
+                <span id="sectorTitle">
+                    Adição
+                </span>
+
+                <span>
+                    Pergunta <strong id="questionNumber">1</strong>/15
+                </span>
+
             </div>
 
-            <div class="bussola">
-                🧭
+            <div class="stat">
+                ⭐ <span id="quizScore">0</span>
             </div>
 
-            <p id="texto-pista">
-                Sua pista aparecerá aqui.
+        </header>
+
+
+        <main class="quiz-container">
+
+            <!-- DECORAÇÕES -->
+            <div class="math-decoration math-1">+</div>
+            <div class="math-decoration math-2">×</div>
+            <div class="math-decoration math-3">÷</div>
+            <div class="math-decoration math-4">−</div>
+            <div class="math-decoration math-5">=</div>
+
+
+            <div class="quiz-card">
+
+                <div class="question-top">
+
+                    <div id="questionBadge" class="question-badge">
+                        DESAFIO
+                    </div>
+
+                    <div id="questionLives" class="question-lives">
+                        ❤️❤️❤️❤️❤️
+                    </div>
+
+                </div>
+
+
+                <div class="cat-question">
+                    🐱
+                </div>
+
+
+                <p id="questionText" class="question-text">
+                    Carregando pergunta...
+                </p>
+
+
+                <div id="answers" class="answers"></div>
+
+
+                <div id="feedback" class="feedback"></div>
+
+
+                <button id="nextButton" class="next-button hidden">
+                    PRÓXIMA ➜
+                </button>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- TELA DE PISTA -->
+    <section id="clueScreen" class="screen">
+
+        <div class="clue-card">
+
+            <div class="clue-icon">
+                🧩
+            </div>
+
+            <h2>VOCÊ ENCONTROU UMA PISTA!</h2>
+
+            <p>
+                O mapa revelou uma nova informação...
             </p>
 
-            <button
-                id="continuar"
-                class="botao"
-            >
-                🗺️ VOLTAR AO MAPA
+            <div id="clueText" class="clue">
+                🔎 Pista encontrada!
+            </div>
+
+            <button id="continueButton" class="main-button">
+                CONTINUAR 🗺️
             </button>
 
         </div>
@@ -259,46 +301,33 @@
     </section>
 
 
-    <!-- FINAL -->
-    <section id="final" class="tela">
+    <!-- TELA FINAL -->
+    <section id="winScreen" class="screen">
 
-        <div class="final-card">
+        <div class="win-card">
 
-            <div class="trofeu">
-                🏆💎🏆
+            <div class="confetti">🎉</div>
+
+            <div class="treasure-big">
+                💰
             </div>
 
-            <h1>
-                TESOURO ENCONTRADO!
-            </h1>
+            <h1>TESOURO ENCONTRADO!</h1>
 
             <p>
-                Parabéns, explorador STEIN!
+                Você completou toda a aventura do STEIN!
             </p>
 
-            <div class="resultado">
-
-                <div>
-                    <strong id="resultado-pontos">0</strong>
-                    <span>XP</span>
-                </div>
-
-                <div>
-                    <strong id="resultado-acertos">0</strong>
-                    <span>Acertos</span>
-                </div>
-
-                <div>
-                    <strong id="resultado-erros">0</strong>
-                    <span>Erros</span>
-                </div>
-
+            <div class="final-score">
+                <span>⭐ Pontuação</span>
+                <strong id="finalScore">0</strong>
             </div>
 
-            <button
-                id="reiniciar"
-                class="botao"
-            >
+            <div id="finalMessage" class="final-message">
+                Você foi incrível!
+            </div>
+
+            <button id="restartButton" class="main-button">
                 🔄 JOGAR NOVAMENTE
             </button>
 
@@ -308,12 +337,11 @@
 
 
     <footer>
-        STEIN 🎮 — Aprender é uma aventura!
+        <p>STEIN • Aventura Matemática • 6º Ano</p>
     </footer>
 
 
     <script src="script.js"></script>
 
 </body>
-
 </html>

@@ -1,32 +1,41 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    --blue: #2563eb;
+    --dark-blue: #172554;
+    --purple: #7c3aed;
+    --pink: #ec4899;
+    --yellow: #facc15;
+    --orange: #f97316;
+    --green: #22c55e;
+    --red: #ef4444;
+
+    --cream: #fff8e7;
+    --paper: #fef3c7;
+
+    --text: #172033;
+    --white: #ffffff;
 }
 
-:root {
-    --roxo: #6c5ce7;
-    --roxo-escuro: #4834d4;
-    --azul: #0984e3;
-    --azul-claro: #74b9ff;
-    --amarelo: #fdcb6e;
-    --verde: #00b894;
-    --vermelho: #ff7675;
-    --branco: #ffffff;
-    --texto: #2d3436;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--texto);
+    min-height: 100vh;
+
+    font-family: "Fredoka", sans-serif;
+
+    color: var(--text);
+
     overflow-x: hidden;
 
     background:
-        linear-gradient(
-            135deg,
-            #dff9ff,
-            #f4edff
-        );
+        radial-gradient(circle at 20% 20%, #60a5fa 0 3px, transparent 4px),
+        radial-gradient(circle at 80% 30%, #facc15 0 4px, transparent 5px),
+        linear-gradient(135deg, #172554, #1e40af 50%, #4c1d95);
+
+    background-size: 70px 70px, 100px 100px, 100% 100%;
 }
 
 
@@ -34,17 +43,115 @@ body {
    TELAS
 ========================= */
 
-.tela {
+.screen {
     display: none;
 
-    width: 100%;
     min-height: 100vh;
 
     position: relative;
+
+    padding-bottom: 70px;
 }
 
-.tela.ativa {
+.screen.active {
+    display: block;
+}
+
+
+/* =========================
+   TELA INICIAL
+========================= */
+
+#startScreen {
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+}
+
+#startScreen.active {
     display: flex;
+}
+
+.start-card {
+    width: min(600px, 95%);
+
+    padding: 45px 35px;
+
+    text-align: center;
+
+    border: 5px solid #fbbf24;
+
+    border-radius: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.97),
+            rgba(255,248,231,.98)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.35),
+        0 0 0 10px rgba(255,255,255,.08);
+
+    animation: appear .7s ease;
+}
+
+.logo-icon {
+    font-size: 75px;
+
+    animation: floating 2.5s ease-in-out infinite;
+}
+
+.logo-area h1 {
+    font-family: "Luckiest Guy", cursive;
+
+    font-size: clamp(70px, 15vw, 125px);
+
+    letter-spacing: 5px;
+
+    color: var(--blue);
+
+    text-shadow:
+        4px 4px 0 var(--yellow),
+        8px 8px 0 rgba(0,0,0,.1);
+}
+
+.subtitle {
+    font-size: 27px;
+
+    font-weight: 700;
+
+    color: var(--purple);
+}
+
+.pirate {
+    font-size: 70px;
+
+    margin: 20px 0;
+}
+
+.intro {
+    max-width: 470px;
+
+    margin: 0 auto 30px;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    color: #475569;
+}
+
+.small-text {
+    margin-top: 18px;
+
+    color: #64748b;
+
+    font-size: 14px;
 }
 
 
@@ -52,104 +159,840 @@ body {
    BOTÕES
 ========================= */
 
-.botao {
+.main-button {
     border: none;
 
-    background: var(--amarelo);
-
-    color: var(--texto);
-
-    padding: 16px 30px;
+    padding: 17px 30px;
 
     border-radius: 18px;
 
-    font-size: 1rem;
+    background: linear-gradient(
+        135deg,
+        #facc15,
+        #f97316
+    );
 
-    font-weight: 900;
+    color: #431407;
+
+    font-family: inherit;
+
+    font-size: 19px;
+
+    font-weight: 700;
 
     cursor: pointer;
 
     box-shadow:
-        0 6px 0 #d99d18;
+        0 7px 0 #c2410c,
+        0 12px 25px rgba(249,115,22,.3);
 
     transition: .2s;
 }
 
-.botao:hover {
-    transform: translateY(-3px);
+.main-button:hover {
+    transform: translateY(-3px) scale(1.03);
 }
 
-.botao:active {
-    transform: translateY(2px);
+.main-button:active {
+    transform: translateY(4px);
 
     box-shadow:
-        0 2px 0 #d99d18;
+        0 3px 0 #c2410c;
 }
 
 
 /* =========================
-   INÍCIO
+   HEADER
 ========================= */
 
-#inicio {
-    flex-direction: column;
+.game-header {
+    min-height: 75px;
+
+    padding: 12px 25px;
+
+    display: flex;
 
     align-items: center;
-    justify-content: center;
 
+    justify-content: space-between;
+
+    gap: 15px;
+
+    background: rgba(15,23,42,.92);
+
+    border-bottom: 3px solid rgba(255,255,255,.15);
+
+    color: white;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 20;
+
+    backdrop-filter: blur(10px);
+}
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 23px;
+}
+
+.brand span {
+    font-size: 32px;
+}
+
+.brand strong {
+    font-family: "Luckiest Guy", cursive;
+
+    letter-spacing: 2px;
+
+    color: #facc15;
+}
+
+.stats {
+    display: flex;
+
+    gap: 12px;
+}
+
+.stat {
+    padding: 9px 15px;
+
+    background: rgba(255,255,255,.12);
+
+    border-radius: 14px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   MAPA
+========================= */
+
+.map-container {
+    width: min(1100px, 94%);
+
+    margin: auto;
+
+    padding: 30px 0;
+}
+
+.map-title {
     text-align: center;
 
     color: white;
 
-    background:
+    margin-bottom: 20px;
+}
+
+.map-title h2 {
+    font-family: "Luckiest Guy", cursive;
+
+    font-size: clamp(35px, 6vw, 60px);
+
+    color: #facc15;
+
+    letter-spacing: 2px;
+
+    text-shadow: 4px 4px 0 #92400e;
+}
+
+.map-title p {
+    font-size: 17px;
+}
+
+
+/* MAPA FÍSICO */
+
+.treasure-map {
+    min-height: 670px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 35px;
+
+    border: 8px solid #92400e;
+
+    background-color: #f5d58a;
+
+    background-image:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(120,53,15,.15) 0 5px,
+            transparent 6px
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(120,53,15,.12) 0 8px,
+            transparent 9px
+        ),
         linear-gradient(
-            135deg,
-            #4834d4,
-            #6c5ce7,
-            #0984e3
+            rgba(255,255,255,.12),
+            rgba(120,53,15,.08)
         );
 
-    padding: 30px;
+    box-shadow:
+        inset 0 0 60px rgba(120,53,15,.25),
+        0 25px 60px rgba(0,0,0,.35);
 }
 
-.logo {
-    font-size: clamp(4rem, 15vw, 8rem);
 
-    font-weight: 1000;
+/* CAMINHOS */
 
-    letter-spacing: 10px;
+.map-path {
+    position: absolute;
 
-    text-shadow:
-        0 8px rgba(0,0,0,.15);
+    height: 12px;
+
+    border-radius: 20px;
+
+    background: #92400e;
+
+    opacity: .55;
+
+    transform-origin: left center;
 }
 
-#inicio h1 {
-    margin: 10px 0;
+.path-1 {
+    width: 260px;
 
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    top: 240px;
+    left: 210px;
+
+    transform: rotate(20deg);
 }
 
-#inicio p {
-    line-height: 1.7;
+.path-2 {
+    width: 260px;
 
-    margin: 15px 0 35px;
+    top: 360px;
+    left: 430px;
 
-    font-size: 1.1rem;
+    transform: rotate(-20deg);
+}
+
+.path-3 {
+    width: 230px;
+
+    top: 290px;
+    left: 570px;
+
+    transform: rotate(25deg);
+}
+
+.path-4 {
+    width: 200px;
+
+    top: 390px;
+    left: 700px;
+
+    transform: rotate(-15deg);
+}
+
+
+/* PONTOS DO MAPA */
+
+.map-point {
+    position: absolute;
+
+    width: 150px;
+    min-height: 135px;
+
+    border: 4px solid #78350f;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 4px;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    z-index: 5;
+}
+
+.map-point.unlocked {
+    background: #facc15;
+
+    box-shadow:
+        0 8px 0 #a16207,
+        0 15px 25px rgba(0,0,0,.2);
+}
+
+.map-point.unlocked:hover {
+    transform: scale(1.1) rotate(-3deg);
+}
+
+.map-point.locked {
+    background: #94a3b8;
+
+    color: #475569;
+
+    cursor: not-allowed;
+
+    filter: grayscale(.5);
+}
+
+.point-icon {
+    font-size: 38px;
+}
+
+.point-name {
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.point-status {
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+/* POSIÇÕES */
+
+#sector1 {
+    top: 90px;
+    left: 60px;
+}
+
+#sector2 {
+    top: 160px;
+    left: 310px;
+}
+
+#sector3 {
+    top: 70px;
+    right: 280px;
+}
+
+#sector4 {
+    bottom: 80px;
+    left: 430px;
+}
+
+#sector5 {
+    top: 360px;
+    right: 70px;
+}
+
+
+/* TESOURO */
+
+.treasure {
+    position: absolute;
+
+    right: 50px;
+    bottom: 50px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    color: #78350f;
+
+    font-weight: 700;
+
+    font-size: 18px;
+
+    animation: treasurePulse 1.7s infinite;
+}
+
+.treasure:first-letter {
+    font-size: 70px;
+}
+
+
+/* GATO */
+
+.map-cat {
+    position: absolute;
+
+    bottom: 30px;
+    left: 40px;
+
+    font-size: 65px;
+
+    z-index: 10;
+
+    animation: catWalk 3s ease-in-out infinite;
 }
 
 
 /* =========================
-   GATO
+   QUIZ
 ========================= */
 
-.gato {
-    font-size: 4rem;
+.quiz-container {
+    width: min(850px, 94%);
 
-    animation:
-        flutuar 3s ease-in-out infinite;
+    margin: auto;
+
+    padding: 50px 0;
+
+    position: relative;
 }
 
-@keyframes flutuar {
+.quiz-card {
+    position: relative;
+
+    z-index: 5;
+
+    background: #fffdf5;
+
+    border: 5px solid #facc15;
+
+    border-radius: 30px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.35);
+
+    text-align: center;
+
+    animation: appear .5s ease;
+}
+
+.question-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+.question-badge {
+    padding: 8px 14px;
+
+    border-radius: 12px;
+
+    background: #dbeafe;
+
+    color: #1d4ed8;
+
+    font-weight: 700;
+
+    font-size: 13px;
+}
+
+.question-lives {
+    letter-spacing: 2px;
+}
+
+.cat-question {
+    font-size: 60px;
+
+    margin-bottom: 10px;
+
+    animation: floating 2s ease-in-out infinite;
+}
+
+.question-text {
+    min-height: 100px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: clamp(23px, 4vw, 31px);
+
+    font-weight: 700;
+
+    line-height: 1.35;
+
+    margin-bottom: 25px;
+}
+
+
+/* RESPOSTAS */
+
+.answers {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+}
+
+.answer-button {
+    border: 3px solid #bfdbfe;
+
+    border-radius: 17px;
+
+    padding: 17px;
+
+    background: white;
+
+    font-family: inherit;
+
+    font-size: 19px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.answer-button:hover {
+    border-color: #2563eb;
+
+    background: #eff6ff;
+
+    transform: translateY(-3px);
+}
+
+.answer-button.correct {
+    background: #bbf7d0;
+
+    border-color: #16a34a;
+
+    color: #14532d;
+}
+
+.answer-button.wrong {
+    background: #fecaca;
+
+    border-color: #dc2626;
+
+    color: #7f1d1d;
+}
+
+.answer-button:disabled {
+    cursor: default;
+}
+
+
+/* FEEDBACK */
+
+.feedback {
+    min-height: 45px;
+
+    margin: 20px 0 5px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+}
+
+.feedback.correct {
+    color: #16a34a;
+}
+
+.feedback.wrong {
+    color: #dc2626;
+}
+
+
+/* PRÓXIMO */
+
+.next-button {
+    border: none;
+
+    padding: 13px 25px;
+
+    border-radius: 15px;
+
+    background: var(--blue);
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.next-button:hover {
+    background: #1d4ed8;
+
+    transform: scale(1.04);
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* SÍMBOLOS */
+
+.math-decoration {
+    position: absolute;
+
+    color: rgba(255,255,255,.7);
+
+    font-size: 70px;
+
+    font-weight: 700;
+
+    animation: floating 3s ease-in-out infinite;
+}
+
+.math-1 {
+    left: 2%;
+    top: 10%;
+}
+
+.math-2 {
+    right: 2%;
+    top: 20%;
+
+    animation-delay: .5s;
+}
+
+.math-3 {
+    left: 4%;
+    bottom: 15%;
+
+    animation-delay: 1s;
+}
+
+.math-4 {
+    right: 4%;
+    bottom: 20%;
+
+    animation-delay: 1.5s;
+}
+
+.math-5 {
+    left: 48%;
+    top: 3%;
+
+    animation-delay: 2s;
+}
+
+
+/* =========================
+   PISTA
+========================= */
+
+#clueScreen {
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+}
+
+#clueScreen.active {
+    display: flex;
+}
+
+.clue-card {
+    width: min(650px, 95%);
+
+    padding: 45px 30px;
+
+    background: #fffdf5;
+
+    border-radius: 30px;
+
+    border: 5px solid #facc15;
+
+    text-align: center;
+
+    box-shadow: 0 30px 70px rgba(0,0,0,.4);
+
+    animation: appear .5s ease;
+}
+
+.clue-icon {
+    font-size: 75px;
+
+    animation: floating 2s infinite;
+}
+
+.clue-card h2 {
+    margin: 15px 0;
+
+    color: #7c3aed;
+
+    font-family: "Luckiest Guy", cursive;
+
+    font-size: 35px;
+}
+
+.clue-card p {
+    color: #64748b;
+
+    margin-bottom: 20px;
+}
+
+.clue {
+    padding: 25px;
+
+    margin-bottom: 25px;
+
+    border-radius: 20px;
+
+    background: #fef3c7;
+
+    border: 3px dashed #d97706;
+
+    color: #78350f;
+
+    font-size: 23px;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   VITÓRIA
+========================= */
+
+#winScreen {
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+}
+
+#winScreen.active {
+    display: flex;
+}
+
+.win-card {
+    width: min(650px, 95%);
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    background: #fffdf5;
+
+    border-radius: 35px;
+
+    border: 6px solid #facc15;
+
+    box-shadow: 0 30px 80px rgba(0,0,0,.45);
+
+    animation: appear .7s ease;
+}
+
+.confetti {
+    font-size: 55px;
+}
+
+.treasure-big {
+    font-size: 100px;
+
+    animation: treasurePulse 1.5s infinite;
+}
+
+.win-card h1 {
+    font-family: "Luckiest Guy", cursive;
+
+    color: #f59e0b;
+
+    font-size: clamp(35px, 7vw, 60px);
+
+    text-shadow: 3px 3px 0 #78350f;
+
+    margin-bottom: 10px;
+}
+
+.final-score {
+    margin: 25px auto;
+
+    padding: 18px;
+
+    max-width: 300px;
+
+    background: #dbeafe;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.final-score strong {
+    font-size: 40px;
+
+    color: #2563eb;
+}
+
+.final-message {
+    margin-bottom: 25px;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 8px;
+
+    text-align: center;
+
+    color: rgba(255,255,255,.7);
+
+    font-size: 12px;
+
+    background: rgba(15,23,42,.5);
+
+    z-index: 30;
+}
+
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes floating {
 
     0%, 100% {
         transform: translateY(0);
@@ -160,758 +1003,140 @@ body {
     }
 }
 
-
-/* =========================
-   MAPA
-========================= */
-
-#mapa {
-    flex-direction: column;
-
-    align-items: center;
-
-    padding: 25px;
-}
-
-#mapa header {
-    text-align: center;
-
-    margin-bottom: 20px;
-}
-
-#mapa header h1 {
-    color: var(--roxo);
-
-    font-size: clamp(2rem, 6vw, 3rem);
-}
-
-#mapa header p {
-    margin: 8px 0 12px;
-
-    color: #636e72;
-}
-
-.status {
-    display: inline-block;
-
-    background: white;
-
-    padding: 10px 18px;
-
-    border-radius: 20px;
-
-    font-weight: 900;
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,.1);
-}
-
-
-/* =========================
-   MAPA VISUAL
-========================= */
-
-.mapa {
-    width: min(1100px, 96vw);
-
-    height: 650px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    border: 12px solid #c89b4a;
-
-    border-radius: 35px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #74b9ff,
-            #81ecec
-        );
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.2);
-}
-
-
-/* ondas do mar */
-
-.mapa::before,
-.mapa::after {
-    content: "";
-
-    position: absolute;
-
-    width: 120%;
-
-    height: 80px;
-
-    border-top:
-        4px dashed rgba(255,255,255,.5);
-
-    border-radius: 50%;
-
-    pointer-events: none;
-}
-
-.mapa::before {
-    top: 35%;
-
-    left: -10%;
-
-    transform: rotate(5deg);
-}
-
-.mapa::after {
-    top: 65%;
-
-    left: -10%;
-
-    transform: rotate(-7deg);
-}
-
-
-/* =========================
-   ILHAS
-========================= */
-
-.ilha {
-    position: absolute;
-
-    z-index: 10;
-}
-
-.ilha1 {
-    top: 10%;
-    left: 10%;
-}
-
-.ilha2 {
-    top: 8%;
-    left: 38%;
-}
-
-.ilha3 {
-    top: 13%;
-    right: 8%;
-}
-
-.ilha4 {
-    top: 40%;
-    left: 18%;
-}
-
-.ilha5 {
-    top: 38%;
-    left: 48%;
-}
-
-.ilha6 {
-    top: 40%;
-    right: 10%;
-}
-
-.ilha7 {
-    bottom: 8%;
-    left: 28%;
-}
-
-.ilha8 {
-    bottom: 8%;
-    right: 28%;
-}
-
-
-.botao-ilha {
-    width: 145px;
-
-    min-height: 125px;
-
-    border: none;
-
-    border-radius:
-        50% 50% 45% 45%;
-
-    background:
-        radial-gradient(
-            circle at 50% 25%,
-            #fff6bd 0 20%,
-            #63c766 21% 60%,
-            #3ca34b 61%
-        );
-
-    box-shadow:
-        0 10px 0 #31833c,
-        0 15px 20px rgba(0,0,0,.15);
-
-    cursor: pointer;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 5px;
-
-    transition: .2s;
-
-    color: var(--texto);
-}
-
-.botao-ilha:hover {
-    transform: scale(1.1) rotate(-2deg);
-}
-
-.botao-ilha strong {
-    font-size: .95rem;
-}
-
-.botao-ilha small {
-    font-size: .7rem;
-}
-
-
-/* =========================
-   BAÚ
-========================= */
-
-.bau {
-    position: absolute;
-
-    right: 4%;
-    bottom: 3%;
-
-    z-index: 12;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    font-size: 4rem;
-
-    animation:
-        brilho 2s infinite;
-}
-
-.bau span {
-    font-size: .8rem;
-
-    font-weight: 900;
-
-    color: #684400;
-
-    background: var(--amarelo);
-
-    padding: 5px 10px;
-
-    border-radius: 10px;
-}
-
-@keyframes brilho {
+@keyframes treasurePulse {
 
     0%, 100% {
-        filter: drop-shadow(0 0 3px gold);
+        transform: scale(1);
     }
 
     50% {
-        filter: drop-shadow(0 0 20px gold);
+        transform: scale(1.12);
     }
 }
 
-.mapa-gato {
-    position: absolute;
+@keyframes appear {
 
-    left: 4%;
-    bottom: 3%;
+    from {
+        opacity: 0;
 
-    z-index: 15;
+        transform: scale(.92) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes catWalk {
+
+    0%, 100% {
+        transform: translateX(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateX(20px) rotate(3deg);
+    }
 }
 
 
 /* =========================
-   JOGO
+   RESPONSIVIDADE
 ========================= */
 
-#jogo {
-    flex-direction: column;
+@media (max-width: 800px) {
 
-    align-items: center;
-
-    padding: 20px;
-}
-
-.cabecalho-jogo {
-    width: min(850px, 100%);
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 10px;
-
-    margin-bottom: 15px;
-}
-
-.botao-pequeno {
-    border: none;
-
-    background: white;
-
-    color: var(--roxo);
-
-    padding: 10px 15px;
-
-    border-radius: 15px;
-
-    font-weight: 900;
-
-    cursor: pointer;
-}
-
-.progresso {
-    width: min(850px, 100%);
-
-    background: #fff5d7;
-
-    border: 3px solid #e2c16b;
-
-    padding: 12px;
-
-    border-radius: 15px;
-}
-
-.barra {
-    height: 10px;
-
-    background: #e2d6b5;
-
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    margin-top: 7px;
-}
-
-#barra-progresso {
-    height: 100%;
-
-    width: 0%;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--roxo),
-            var(--azul)
-        );
-
-    transition: .4s;
-}
-
-
-/* =========================
-   ÁREA DAS PERGUNTAS
-========================= */
-
-.area-jogo {
-    width: 100%;
-
-    flex: 1;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    position: relative;
-}
-
-.cartao {
-    width: min(700px, 95%);
-
-    background: white;
-
-    border-radius: 30px;
-
-    padding: 30px;
-
-    text-align: center;
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.12);
-
-    position: relative;
-
-    z-index: 5;
-}
-
-#categoria {
-    display: inline-block;
-
-    background: #eeeaff;
-
-    color: var(--roxo);
-
-    padding: 8px 15px;
-
-    border-radius: 30px;
-
-    font-weight: 900;
-}
-
-.pergaminho {
-    font-size: 3rem;
-
-    margin: 10px;
-}
-
-#pergunta {
-    font-size: clamp(1.3rem, 4vw, 2rem);
-
-    margin-bottom: 25px;
-}
-
-#alternativas {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 12px;
-}
-
-.alternativa {
-    border: 3px solid #eee;
-
-    background: white;
-
-    border-radius: 15px;
-
-    padding: 15px;
-
-    font-weight: 900;
-
-    cursor: pointer;
-
-    transition: .2s;
-}
-
-.alternativa:hover:not(:disabled) {
-    border-color: var(--azul);
-
-    background: #eff9ff;
-
-    transform: translateY(-3px);
-}
-
-.alternativa.correta {
-    background: var(--verde);
-
-    border-color: var(--verde);
-
-    color: white;
-}
-
-.alternativa.errada {
-    background: var(--vermelho);
-
-    border-color: var(--vermelho);
-
-    color: white;
-}
-
-#feedback {
-    min-height: 35px;
-
-    margin: 15px;
-
-    font-weight: 900;
-}
-
-.gato-pergunta {
-    position: absolute;
-
-    right: 4%;
-
-    bottom: 4%;
-}
-
-.simbolo {
-    position: absolute;
-
-    color: var(--roxo);
-
-    opacity: .12;
-
-    font-size: 5rem;
-
-    font-weight: 900;
-
-    animation:
-        flutuar 4s infinite;
-}
-
-.simbolo1 {
-    left: 5%;
-    top: 15%;
-}
-
-.simbolo2 {
-    right: 8%;
-    top: 10%;
-}
-
-.simbolo3 {
-    left: 10%;
-    bottom: 10%;
-}
-
-.simbolo4 {
-    right: 12%;
-    bottom: 15%;
-}
-
-
-/* =========================
-   PISTA
-========================= */
-
-#pista {
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        radial-gradient(
-            circle,
-            #fff1b8,
-            #d7bc6b
-        );
-
-    padding: 20px;
-}
-
-.pergaminho-grande {
-    width: min(650px, 95%);
-
-    background: #fff5d6;
-
-    border: 5px solid #c49a43;
-
-    border-radius: 10px;
-
-    padding: 40px 25px;
-
-    text-align: center;
-
-    box-shadow:
-        0 20px 50px rgba(70,45,0,.25);
-}
-
-.pergaminho-grande h1 {
-    color: #795500;
-
-    margin-bottom: 20px;
-}
-
-.numero-pista {
-    font-weight: 900;
-
-    color: #795500;
-}
-
-.bussola {
-    font-size: 4rem;
-
-    margin: 15px;
-}
-
-#texto-pista {
-    font-family: Georgia, serif;
-
-    font-size: 1.5rem;
-
-    line-height: 1.6;
-
-    margin: 20px 0 30px;
-
-    color: #493715;
-}
-
-.gato-pista {
-    position: absolute;
-
-    top: 10%;
-
-    right: 10%;
-}
-
-
-/* =========================
-   FINAL
-========================= */
-
-#final {
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #4834d4,
-            #6c5ce7,
-            #0984e3
-        );
-}
-
-.final-card {
-    width: min(600px, 95%);
-
-    background: white;
-
-    border-radius: 30px;
-
-    padding: 40px 25px;
-
-    text-align: center;
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.25);
-}
-
-.trofeu {
-    font-size: 4rem;
-}
-
-.final-card h1 {
-    color: var(--roxo);
-
-    margin: 15px 0;
-}
-
-.resultado {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 10px;
-
-    margin: 25px 0;
-}
-
-.resultado div {
-    background: #f5f4ff;
-
-    padding: 15px;
-
-    border-radius: 15px;
-}
-
-.resultado strong {
-    display: block;
-
-    color: var(--roxo);
-
-    font-size: 1.6rem;
-}
-
-.resultado span {
-    color: #636e72;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-    text-align: center;
-
-    padding: 10px;
-
-    color: #636e72;
-
-    font-size: .8rem;
-}
-
-
-/* =========================
-   CELULAR
-========================= */
-
-@media (max-width: 650px) {
-
-    .mapa {
-        height: 600px;
+    .treasure-map {
+        min-height: 850px;
     }
 
-    .botao-ilha {
-        width: 100px;
-
-        min-height: 95px;
+    #sector1 {
+        top: 50px;
+        left: 30px;
     }
 
-    .botao-ilha strong {
-        font-size: .75rem;
+    #sector2 {
+        top: 230px;
+        right: 30px;
+        left: auto;
     }
 
-    .botao-ilha small {
-        font-size: .6rem;
+    #sector3 {
+        top: 410px;
+        left: 30px;
+        right: auto;
     }
 
-    .ilha1 {
-        left: 8%;
+    #sector4 {
+        bottom: 190px;
+        right: 30px;
+        left: auto;
     }
 
-    .ilha2 {
-        left: 50%;
+    #sector5 {
+        top: 600px;
+        right: auto;
+        left: calc(50% - 75px);
     }
 
-    .ilha3 {
-        right: 5%;
-    }
-
-    .ilha4 {
-        left: 12%;
-        top: 38%;
-    }
-
-    .ilha5 {
-        left: 50%;
-        top: 38%;
-    }
-
-    .ilha6 {
-        right: 5%;
-        top: 42%;
-    }
-
-    .ilha7 {
-        left: 30%;
-    }
-
-    .ilha8 {
-        right: 15%;
-    }
-
-    #alternativas {
-        grid-template-columns: 1fr;
-    }
-
-    .gato-pergunta {
+    .path-1,
+    .path-2,
+    .path-3,
+    .path-4 {
         display: none;
     }
 
+    .treasure {
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .map-cat {
+        left: 15px;
+        bottom: 15px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .game-header {
+        padding: 10px;
+
+        flex-wrap: wrap;
+    }
+
+    .brand {
+        font-size: 18px;
+    }
+
+    .stats {
+        gap: 5px;
+    }
+
+    .stat {
+        padding: 7px 9px;
+    }
+
+    .quiz-card {
+        padding: 20px 15px;
+    }
+
+    .answers {
+        grid-template-columns: 1fr;
+    }
+
+    .question-text {
+        min-height: 130px;
+    }
+
+    .math-decoration {
+        font-size: 45px;
+    }
+
+    .map-point {
+        width: 135px;
+        min-height: 125px;
+    }
 }
