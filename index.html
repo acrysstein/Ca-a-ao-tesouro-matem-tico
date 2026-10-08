@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>STEIN — A Caça ao Tesouro</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         TELA INICIAL
+    ====================================================== -->
+
+    <section id="tela-inicial" class="tela ativa">
+
+        <div class="decoracao mapa-simbolo">✦</div>
+
+        <div class="logo">STEIN</div>
+
+        <h2>🗺️ A Caça ao Tesouro Matemático</h2>
+
+        <p class="subtitulo">
+            Resolva os desafios, conquiste pistas<br>
+            e encontre o tesouro perdido!
+        </p>
+
+        <button id="btn-comecar" class="btn btn-principal">
+            🧭 COMEÇAR A AVENTURA
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAPA
+    ====================================================== -->
+
+    <section id="tela-setores" class="tela">
+
+        <header class="cabecalho-mapa">
+
+            <div>
+                <span class="etiqueta">🗺️ MAPA DA AVENTURA</span>
+
+                <h1>
+                    Escolha seu caminho!
+                </h1>
+
+                <p>
+                    Complete os desafios para conquistar
+                    novas pistas do tesouro.
+                </p>
+            </div>
+
+            <div class="tesouro-status">
+                💎 <span id="pistas-total">0</span>/8 pistas
+            </div>
+
+        </header>
+
+
+        <main class="mapa">
+
+            <div class="rota rota-1"></div>
+            <div class="rota rota-2"></div>
+            <div class="rota rota-3"></div>
+
+
+            <button
+                class="ilha"
+                data-setor="adicao"
+                style="--pos-x: 8%; --pos-y: 15%;"
+            >
+                <span class="ilha-emoji">➕</span>
+                <strong>Ilha da Adição</strong>
+                <small>15 desafios</small>
+            </button>
+
+
+            <button
+                class="ilha"
+                data-setor="subtracao"
+                style="--pos-x: 38%; --pos-y: 10%;"
+            >
+                <span class="ilha-emoji">➖</span>
+                <strong>Vale da Subtração</strong>
+                <small>15 desafios</small>
+            </button>
+
+
+            <button
+                class="ilha"
+                data-setor="multiplicacao"
+                style="--pos-x: 68%; --pos-y: 18%;"
+            >
+                <span class="ilha-emoji">✖️</span>
+                <strong>Ilha da Multiplicação</strong>
+                <small>15 desafios</small>
+            </button>
+
+
+            <button
+                class="ilha"
+                data-setor="divisao"
+                style="--pos-x: 20%; --pos-y: 43%;"
+            >
+                <span class="ilha-emoji">➗</span>
+                <strong>Caverna da Divisão</strong>
+                <small>15 desafios</small>
+            </button>
+
+
+            <button
+                class="ilha"
+                data-setor="fracoes"
+                style="--pos-x: 52%; --pos-y: 42%;"
+            >
+                <span class="ilha-emoji">🍕</span>
+                <strong>Ilha das Frações</strong>
+                <small>15 desafios</small>
+            </button>
+
+
+            <button
+                class="ilha"
+                data-setor="decimais"
+                style="--pos-x: 78%; --pos-y: 46%;"
+            >
+                <span class="ilha-emoji">🔢</span>
+                <strong>Porto Decimal</strong>
+                <small>15 desafios</small>
+            </button>
+
+
+            <button
+                class="ilha"
+                data-setor="porcentagem"
+                style="--pos-x: 32%; --pos-y: 70%;"
+            >
+                <span class="ilha-emoji">💯</span>
+                <strong>Montanha da Porcentagem</strong>
+                <small>15 desafios</small>
+            </button>
+
+
+            <button
+                class="ilha"
+                data-setor="geometria"
+                style="--pos-x: 65%; --pos-y: 72%;"
+            >
+                <span class="ilha-emoji">📐</span>
+                <strong>Templo da Geometria</strong>
+                <small>15 desafios</small>
+            </button>
+
+
+            <!-- TESOURO FINAL -->
+
+            <div class="tesouro-final">
+
+                <div class="tesouro-baú">
+                    💎
+                </div>
+
+                <strong>TESOURO</strong>
+
+                <small>Complete o mapa!</small>
+
+            </div>
+
+
+            <!-- GATO -->
+
+            <div class="gato-mapa">
+                🐱
+                <span>Vamos!</span>
+            </div>
+
+        </main>
+
+
+        <button
+            id="btn-voltar-inicio"
+            class="btn btn-secundario voltar"
+        >
+            ← Voltar
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         TELA DO JOGO
+    ====================================================== -->
+
+    <section id="tela-jogo" class="tela">
+
+        <header class="topo-jogo">
+
+            <button
+                id="btn-voltar-setores"
+                class="btn btn-secundario"
+            >
+                🗺️ Mapa
+            </button>
+
+
+            <div class="info-jogo">
+                💎 <span id="pontuacao">0</span> XP
+            </div>
+
+
+            <div class="info-jogo vidas">
+                <span id="vidas">❤️❤️❤️</span>
+            </div>
+
+        </header>
+
+
+        <div class="pergaminho-progresso">
+
+            <span>
+                Pergunta
+                <strong id="questao-atual">1</strong>
+                de 15
+            </span>
+
+            <div class="progresso-container">
+                <div id="barra-progresso"></div>
+            </div>
+
+        </div>
+
+
+        <main class="area-desafio">
+
+            <!-- SÍMBOLOS FLUTUANTES -->
+
+            <div class="simbolo-flutuante s1">+</div>
+            <div class="simbolo-flutuante s2">×</div>
+            <div class="simbolo-flutuante s3">÷</div>
+            <div class="simbolo-flutuante s4">−</div>
+
+
+            <div class="gato-jogo">
+                🐱
+                <span id="fala-gato">
+                    Você consegue!
+                </span>
+            </div>
+
+
+            <article class="card-pergunta">
+
+                <span id="categoria">
+                    ➕ Adição
+                </span>
+
+                <div class="pergaminho-icon">
+                    📜
+                </div>
+
+                <h2 id="pergunta">
+                    Prepare-se para o desafio!
+                </h2>
+
+                <div id="alternativas"></div>
+
+                <div
+                    id="feedback"
+                    class="feedback"
+                ></div>
+
+                <button
+                    id="btn-proxima"
+                    class="btn btn-principal"
+                    style="display:none;"
+                >
+                    🔎 PEGAR PRÓXIMA PISTA
+                </button>
+
+            </article>
+
+        </main>
+
+    </section>
+
+
+    <!-- =====================================================
+         TELA DA PISTA
+    ====================================================== -->
+
+    <section id="tela-pista" class="tela">
+
+        <div class="efeito-papel"></div>
+
+        <main class="pista-container">
+
+            <div class="gato-pista">
+                🐱
+            </div>
+
+            <div class="pista-titulo">
+                🔓 NOVA PISTA DESBLOQUEADA!
+            </div>
+
+            <div class="pergaminho">
+
+                <div class="pista-numero">
+                    PISTA #<span id="numero-pista">1</span>
+                </div>
+
+                <div class="bússola">
+                    🧭
+                </div>
+
+                <p id="texto-pista">
+                    O caminho do tesouro começa aqui...
+                </p>
+
+                <div class="linha-pista"></div>
+
+                <span class="dica-pista">
+                    Guarde esta pista! Ela faz parte do mapa.
+                </span>
+
+            </div>
+
+            <button
+                id="btn-continuar-pista"
+                class="btn btn-principal"
+            >
+                🗺️ CONTINUAR AVENTURA
+            </button>
+
+        </main>
+
+    </section>
+
+
+    <!-- =====================================================
+         TELA FINAL
+    ====================================================== -->
+
+    <section id="tela-final" class="tela">
+
+        <main class="resultado-card">
+
+            <div id="icone-resultado">
+                💎
+            </div>
+
+            <h1 id="titulo-resultado">
+                VOCÊ ENCONTROU O TESOURO!
+            </h1>
+
+            <p id="mensagem-resultado">
+                Parabéns, explorador STEIN!
+            </p>
+
+
+            <div class="resultado-numeros">
+
+                <div class="resultado-item">
+                    <strong id="pontuacao-final">0</strong>
+                    <span>XP</span>
+                </div>
+
+                <div class="resultado-item">
+                    <strong id="acertos-final">0</strong>
+                    <span>Acertos</span>
+                </div>
+
+                <div class="resultado-item">
+                    <strong id="erros-final">0</strong>
+                    <span>Erros</span>
+                </div>
+
+            </div>
+
+
+            <div class="tesouro-conquistado">
+                🏆 🪙 💎 🪙 🏆
+            </div>
+
+
+            <div class="botoes-final">
+
+                <button
+                    id="btn-jogar-novamente"
+                    class="btn btn-principal"
+                >
+                    🔄 NOVA AVENTURA
+                </button>
+
+                <button
+                    id="btn-escolher-setor"
+                    class="btn btn-secundario"
+                >
+                    🗺️ VOLTAR AO MAPA
+                </button>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <footer>
+        <p>
+            🎮 STEIN — Aprender também pode ser uma aventura!
+        </p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
