@@ -5,51 +5,41 @@
 }
 
 :root {
-    --roxo: #6C5CE7;
-    --roxo-escuro: #5144B8;
-    --azul: #0984E3;
-    --azul-claro: #74B9FF;
-    --amarelo: #FDCB6E;
-    --dourado: #F39C12;
-    --verde: #00B894;
-    --vermelho: #FF7675;
-    --rosa: #FD79A8;
-
-    --mar: #74B9FF;
-    --mar-escuro: #0984E3;
-
-    --papel: #FFF7DC;
-    --papel-escuro: #E7C878;
-
-    --fundo: #F8F9FF;
-    --texto: #2D3436;
-    --branco: #FFFFFF;
-}
-
-html {
-    scroll-behavior: smooth;
+    --roxo: #6c5ce7;
+    --roxo-escuro: #4834d4;
+    --azul: #0984e3;
+    --azul-claro: #74b9ff;
+    --amarelo: #fdcb6e;
+    --verde: #00b894;
+    --vermelho: #ff7675;
+    --branco: #ffffff;
+    --texto: #2d3436;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: var(--texto);
-    background: var(--fundo);
     overflow-x: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dff9ff,
+            #f4edff
+        );
 }
 
-button {
-    font-family: inherit;
-    cursor: pointer;
-}
 
-
-/* =====================================================
+/* =========================
    TELAS
-===================================================== */
+========================= */
 
 .tela {
     display: none;
+
+    width: 100%;
     min-height: 100vh;
+
     position: relative;
 }
 
@@ -58,441 +48,412 @@ button {
 }
 
 
-/* =====================================================
+/* =========================
    BOTÕES
-===================================================== */
+========================= */
 
-.btn {
+.botao {
     border: none;
-    border-radius: 18px;
-    padding: 15px 25px;
-    font-size: 1rem;
-    font-weight: 900;
-    transition: 0.2s;
-}
 
-.btn:hover {
-    transform: translateY(-4px);
-}
-
-.btn-principal {
     background: var(--amarelo);
+
     color: var(--texto);
 
-    box-shadow:
-        0 6px 0 var(--dourado),
-        0 12px 25px rgba(0, 0, 0, .18);
-}
+    padding: 16px 30px;
 
-.btn-principal:hover {
-    background: #FFE49A;
-}
+    border-radius: 18px;
 
-.btn-secundario {
-    background: white;
-    color: var(--roxo);
+    font-size: 1rem;
 
-    border: 2px solid rgba(108, 92, 231, .15);
+    font-weight: 900;
+
+    cursor: pointer;
 
     box-shadow:
-        0 8px 25px rgba(0, 0, 0, .1);
+        0 6px 0 #d99d18;
+
+    transition: .2s;
+}
+
+.botao:hover {
+    transform: translateY(-3px);
+}
+
+.botao:active {
+    transform: translateY(2px);
+
+    box-shadow:
+        0 2px 0 #d99d18;
 }
 
 
-/* =====================================================
-   TELA INICIAL
-===================================================== */
+/* =========================
+   INÍCIO
+========================= */
 
-#tela-inicial {
+#inicio {
     flex-direction: column;
-    justify-content: center;
+
     align-items: center;
+    justify-content: center;
 
     text-align: center;
 
     color: white;
 
-    overflow: hidden;
-
     background:
         linear-gradient(
             135deg,
-            #5144B8,
-            #6C5CE7,
-            #0984E3
+            #4834d4,
+            #6c5ce7,
+            #0984e3
         );
+
+    padding: 30px;
 }
 
 .logo {
-    font-size: clamp(4rem, 14vw, 8rem);
+    font-size: clamp(4rem, 15vw, 8rem);
+
     font-weight: 1000;
+
     letter-spacing: 10px;
 
     text-shadow:
-        0 8px 0 rgba(0, 0, 0, .15);
+        0 8px rgba(0,0,0,.15);
 }
 
-#tela-inicial h2 {
-    font-size: clamp(1.4rem, 4vw, 2.2rem);
+#inicio h1 {
     margin: 10px 0;
+
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
 }
 
-.subtitulo {
-    font-size: 1.1rem;
-    line-height: 1.6;
+#inicio p {
+    line-height: 1.7;
+
     margin: 15px 0 35px;
+
+    font-size: 1.1rem;
 }
 
 
-/* =====================================================
+/* =========================
+   GATO
+========================= */
+
+.gato {
+    font-size: 4rem;
+
+    animation:
+        flutuar 3s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+
+/* =========================
    MAPA
-===================================================== */
+========================= */
 
-#tela-setores {
+#mapa {
     flex-direction: column;
+
     align-items: center;
 
-    background:
-        linear-gradient(
-            #DFF4FF,
-            #BFE8FF
-        );
+    padding: 25px;
 }
 
-.cabecalho-mapa {
-    width: min(1100px, 92%);
-    padding: 30px 0 15px;
+#mapa header {
+    text-align: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    margin-bottom: 20px;
 }
 
-.cabecalho-mapa h1 {
+#mapa header h1 {
     color: var(--roxo);
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin: 8px 0;
+
+    font-size: clamp(2rem, 6vw, 3rem);
 }
 
-.cabecalho-mapa p {
-    color: #52606D;
+#mapa header p {
+    margin: 8px 0 12px;
+
+    color: #636e72;
 }
 
-.etiqueta {
-    color: var(--azul);
-    font-weight: 900;
-}
+.status {
+    display: inline-block;
 
-.tesouro-status {
     background: white;
-    padding: 15px 20px;
+
+    padding: 10px 18px;
+
     border-radius: 20px;
 
     font-weight: 900;
-    color: var(--dourado);
 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, .1);
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.1);
 }
 
 
-/* =====================================================
+/* =========================
    MAPA VISUAL
-===================================================== */
+========================= */
 
 .mapa {
-    width: min(1100px, 94%);
-    height: min(650px, 68vh);
+    width: min(1100px, 96vw);
 
-    min-height: 520px;
+    height: 650px;
 
     position: relative;
+
     overflow: hidden;
 
-    border: 12px solid #D5A85C;
+    border: 12px solid #c89b4a;
+
     border-radius: 35px;
 
     background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(255,255,255,.35),
-            transparent 20%
-        ),
         linear-gradient(
             145deg,
-            var(--mar),
-            #81ECEC,
-            var(--azul-claro)
+            #74b9ff,
+            #81ecec
         );
 
     box-shadow:
-        inset 0 0 50px rgba(0, 0, 0, .12),
-        0 15px 40px rgba(0, 0, 0, .18);
+        0 20px 50px rgba(0,0,0,.2);
 }
 
 
-/* ondas */
+/* ondas do mar */
 
 .mapa::before,
 .mapa::after {
     content: "";
+
     position: absolute;
 
-    width: 160%;
+    width: 120%;
+
     height: 80px;
 
-    border-top: 4px dashed rgba(255,255,255,.4);
+    border-top:
+        4px dashed rgba(255,255,255,.5);
+
     border-radius: 50%;
 
     pointer-events: none;
 }
 
 .mapa::before {
-    top: 30%;
-    left: -20%;
-    transform: rotate(8deg);
+    top: 35%;
+
+    left: -10%;
+
+    transform: rotate(5deg);
 }
 
 .mapa::after {
     top: 65%;
-    left: -20%;
+
+    left: -10%;
+
     transform: rotate(-7deg);
 }
 
 
-/* =====================================================
-   ROTAS
-===================================================== */
-
-.rota {
-    position: absolute;
-
-    border-top: 5px dashed rgba(255,255,255,.65);
-
-    width: 30%;
-
-    transform-origin: left center;
-
-    z-index: 1;
-}
-
-.rota-1 {
-    left: 18%;
-    top: 25%;
-    transform: rotate(-5deg);
-}
-
-.rota-2 {
-    left: 48%;
-    top: 27%;
-    transform: rotate(12deg);
-}
-
-.rota-3 {
-    left: 28%;
-    top: 58%;
-    transform: rotate(-8deg);
-}
-
-
-/* =====================================================
+/* =========================
    ILHAS
-===================================================== */
+========================= */
 
 .ilha {
     position: absolute;
 
-    left: var(--pos-x);
-    top: var(--pos-y);
-
-    transform: translate(-50%, -50%);
-
-    width: 145px;
-    min-height: 120px;
-
-    border: 0;
-
-    border-radius: 50% 50% 45% 45%;
-
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            #FFF8D6 0 25%,
-            #6CCB70 26% 60%,
-            #4DAA52 61%
-        );
-
-    box-shadow:
-        0 12px 0 rgba(45, 130, 55, .3),
-        0 15px 20px rgba(0,0,0,.15);
-
-    z-index: 5;
-
-    padding: 12px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    color: var(--texto);
-
-    transition: .25s;
-}
-
-.ilha:hover {
-    transform: translate(-50%, -50%) scale(1.08) rotate(-2deg);
     z-index: 10;
 }
 
-.ilha-emoji {
-    font-size: 2.2rem;
+.ilha1 {
+    top: 10%;
+    left: 10%;
 }
 
-.ilha strong {
-    font-size: .9rem;
-    margin-top: 5px;
+.ilha2 {
+    top: 8%;
+    left: 38%;
 }
 
-.ilha small {
-    color: #456;
-    margin-top: 4px;
+.ilha3 {
+    top: 13%;
+    right: 8%;
+}
+
+.ilha4 {
+    top: 40%;
+    left: 18%;
+}
+
+.ilha5 {
+    top: 38%;
+    left: 48%;
+}
+
+.ilha6 {
+    top: 40%;
+    right: 10%;
+}
+
+.ilha7 {
+    bottom: 8%;
+    left: 28%;
+}
+
+.ilha8 {
+    bottom: 8%;
+    right: 28%;
 }
 
 
-/* =====================================================
-   TESOURO
-===================================================== */
+.botao-ilha {
+    width: 145px;
 
-.tesouro-final {
+    min-height: 125px;
+
+    border: none;
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            #fff6bd 0 20%,
+            #63c766 21% 60%,
+            #3ca34b 61%
+        );
+
+    box-shadow:
+        0 10px 0 #31833c,
+        0 15px 20px rgba(0,0,0,.15);
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    transition: .2s;
+
+    color: var(--texto);
+}
+
+.botao-ilha:hover {
+    transform: scale(1.1) rotate(-2deg);
+}
+
+.botao-ilha strong {
+    font-size: .95rem;
+}
+
+.botao-ilha small {
+    font-size: .7rem;
+}
+
+
+/* =========================
+   BAÚ
+========================= */
+
+.bau {
     position: absolute;
 
-    right: 5%;
-    bottom: 5%;
+    right: 4%;
+    bottom: 3%;
 
-    width: 150px;
+    z-index: 12;
 
-    text-align: center;
+    display: flex;
 
-    color: #6B4300;
+    flex-direction: column;
 
-    z-index: 7;
-}
+    align-items: center;
 
-.tesouro-baú {
-    font-size: 4.5rem;
+    font-size: 4rem;
 
     animation:
-        brilho 2s ease-in-out infinite;
+        brilho 2s infinite;
 }
 
-.tesouro-final strong {
-    display: block;
+.bau span {
+    font-size: .8rem;
+
+    font-weight: 900;
+
+    color: #684400;
 
     background: var(--amarelo);
 
     padding: 5px 10px;
 
     border-radius: 10px;
-
-    font-size: .85rem;
 }
-
-.tesouro-final small {
-    display: block;
-    margin-top: 5px;
-}
-
 
 @keyframes brilho {
 
     0%, 100% {
-        filter: drop-shadow(0 0 4px #FFD700);
-        transform: translateY(0);
+        filter: drop-shadow(0 0 3px gold);
     }
 
     50% {
-        filter: drop-shadow(0 0 20px #FFD700);
-        transform: translateY(-7px);
+        filter: drop-shadow(0 0 20px gold);
     }
-
 }
 
-
-/* =====================================================
-   GATO
-===================================================== */
-
-.gato-mapa {
+.mapa-gato {
     position: absolute;
 
-    bottom: 5%;
-    left: 5%;
-
-    font-size: 4rem;
+    left: 4%;
+    bottom: 3%;
 
     z-index: 15;
-
-    animation:
-        gato 3s ease-in-out infinite;
-}
-
-.gato-mapa span {
-    position: absolute;
-
-    left: 60px;
-    top: -20px;
-
-    background: white;
-
-    color: var(--texto);
-
-    padding: 8px 12px;
-
-    border-radius: 15px;
-
-    font-size: .8rem;
-    font-weight: 900;
-
-    box-shadow: 0 5px 15px rgba(0,0,0,.12);
-}
-
-@keyframes gato {
-
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-
 }
 
 
-/* =====================================================
+/* =========================
    JOGO
-===================================================== */
+========================= */
 
-#tela-jogo {
+#jogo {
     flex-direction: column;
-    align-items: center;
 
-    background:
-        linear-gradient(
-            135deg,
-            #F8F9FF,
-            #E7F5FF
-        );
+    align-items: center;
 
     padding: 20px;
 }
 
-.topo-jogo {
-    width: min(900px, 100%);
+.cabecalho-jogo {
+    width: min(850px, 100%);
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     gap: 10px;
@@ -500,51 +461,49 @@ button {
     margin-bottom: 15px;
 }
 
-.info-jogo {
+.botao-pequeno {
+    border: none;
+
     background: white;
 
-    padding: 12px 18px;
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 6px 20px rgba(0,0,0,.08);
-
-    font-weight: 900;
-}
-
-.vidas {
-    color: var(--vermelho);
-}
-
-.pergaminho-progresso {
-    width: min(900px, 100%);
-
-    background: var(--papel);
-
-    border: 3px solid var(--papel-escuro);
-
-    border-radius: 15px;
+    color: var(--roxo);
 
     padding: 10px 15px;
 
-    font-weight: 800;
+    border-radius: 15px;
+
+    font-weight: 900;
+
+    cursor: pointer;
 }
 
-.progresso-container {
+.progresso {
+    width: min(850px, 100%);
+
+    background: #fff5d7;
+
+    border: 3px solid #e2c16b;
+
+    padding: 12px;
+
+    border-radius: 15px;
+}
+
+.barra {
     height: 10px;
 
-    background: #E0D5B5;
+    background: #e2d6b5;
 
     border-radius: 20px;
 
-    margin-top: 7px;
-
     overflow: hidden;
+
+    margin-top: 7px;
 }
 
 #barra-progresso {
     height: 100%;
+
     width: 0%;
 
     background:
@@ -554,39 +513,41 @@ button {
             var(--azul)
         );
 
-    transition: width .4s;
+    transition: .4s;
 }
 
 
-/* =====================================================
-   ÁREA DO DESAFIO
-===================================================== */
+/* =========================
+   ÁREA DAS PERGUNTAS
+========================= */
 
-.area-desafio {
-    width: min(1000px, 100%);
+.area-jogo {
+    width: 100%;
 
     flex: 1;
 
     display: flex;
-    justify-content: center;
+
     align-items: center;
+
+    justify-content: center;
 
     position: relative;
 }
 
-.card-pergunta {
-    width: min(750px, 100%);
+.cartao {
+    width: min(700px, 95%);
 
     background: white;
 
     border-radius: 30px;
 
-    padding: 35px;
+    padding: 30px;
 
     text-align: center;
 
     box-shadow:
-        0 20px 50px rgba(108,92,231,.15);
+        0 20px 50px rgba(0,0,0,.12);
 
     position: relative;
 
@@ -596,25 +557,27 @@ button {
 #categoria {
     display: inline-block;
 
-    background: rgba(108,92,231,.1);
+    background: #eeeaff;
 
     color: var(--roxo);
 
     padding: 8px 15px;
 
-    border-radius: 50px;
+    border-radius: 30px;
 
     font-weight: 900;
 }
 
-.pergaminho-icon {
+.pergaminho {
     font-size: 3rem;
-    margin: 10px 0;
+
+    margin: 10px;
 }
 
 #pergunta {
-    font-size: clamp(1.4rem, 4vw, 2.2rem);
-    margin: 10px 0 25px;
+    font-size: clamp(1.3rem, 4vw, 2rem);
+
+    margin-bottom: 25px;
 }
 
 #alternativas {
@@ -622,465 +585,333 @@ button {
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 14px;
+    gap: 12px;
 }
 
 .alternativa {
-    border: 3px solid #E8E8F5;
+    border: 3px solid #eee;
 
     background: white;
 
-    border-radius: 17px;
+    border-radius: 15px;
 
-    padding: 17px;
+    padding: 15px;
 
-    font-size: 1rem;
-    font-weight: 800;
+    font-weight: 900;
+
+    cursor: pointer;
 
     transition: .2s;
 }
 
 .alternativa:hover:not(:disabled) {
     border-color: var(--azul);
-    background: #F0F8FF;
+
+    background: #eff9ff;
+
     transform: translateY(-3px);
 }
 
 .alternativa.correta {
     background: var(--verde);
-    color: white;
+
     border-color: var(--verde);
+
+    color: white;
 }
 
 .alternativa.errada {
     background: var(--vermelho);
-    color: white;
+
     border-color: var(--vermelho);
+
+    color: white;
 }
 
-.feedback {
+#feedback {
     min-height: 35px;
 
-    margin: 18px 0;
+    margin: 15px;
 
     font-weight: 900;
 }
 
-.feedback.certo {
-    color: var(--verde);
-}
-
-.feedback.errado {
-    color: var(--vermelho);
-}
-
-
-/* =====================================================
-   SÍMBOLOS FLUTUANTES
-===================================================== */
-
-.simbolo-flutuante {
+.gato-pergunta {
     position: absolute;
 
-    font-size: 4rem;
-    font-weight: 900;
+    right: 4%;
+
+    bottom: 4%;
+}
+
+.simbolo {
+    position: absolute;
 
     color: var(--roxo);
 
     opacity: .12;
 
-    z-index: 1;
+    font-size: 5rem;
 
-    animation: flutuar 4s ease-in-out infinite;
-}
-
-.s1 {
-    top: 8%;
-    left: 5%;
-}
-
-.s2 {
-    top: 65%;
-    left: 8%;
-    animation-delay: 1s;
-}
-
-.s3 {
-    top: 15%;
-    right: 6%;
-    animation-delay: 2s;
-}
-
-.s4 {
-    bottom: 8%;
-    right: 8%;
-    animation-delay: 3s;
-}
-
-@keyframes flutuar {
-
-    0%, 100% {
-        transform: translateY(0) rotate(0);
-    }
-
-    50% {
-        transform: translateY(-15px) rotate(8deg);
-    }
-
-}
-
-
-/* =====================================================
-   GATO DURANTE O JOGO
-===================================================== */
-
-.gato-jogo {
-    position: absolute;
-
-    right: 2%;
-    bottom: 5%;
-
-    font-size: 3.5rem;
-
-    z-index: 10;
-
-    animation: gato 3s infinite;
-}
-
-.gato-jogo span {
-    position: absolute;
-
-    right: 60px;
-    top: -10px;
-
-    width: 130px;
-
-    background: white;
-
-    border-radius: 15px;
-
-    padding: 8px;
-
-    font-size: .75rem;
     font-weight: 900;
 
-    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    animation:
+        flutuar 4s infinite;
+}
+
+.simbolo1 {
+    left: 5%;
+    top: 15%;
+}
+
+.simbolo2 {
+    right: 8%;
+    top: 10%;
+}
+
+.simbolo3 {
+    left: 10%;
+    bottom: 10%;
+}
+
+.simbolo4 {
+    right: 12%;
+    bottom: 15%;
 }
 
 
-/* =====================================================
-   TELA DA PISTA
-===================================================== */
+/* =========================
+   PISTA
+========================= */
 
-#tela-pista {
-    justify-content: center;
+#pista {
     align-items: center;
 
-    text-align: center;
+    justify-content: center;
 
     background:
         radial-gradient(
             circle,
-            #FFF4C2,
-            #D8C080
-        );
-}
-
-.pista-container {
-    width: min(650px, 90%);
-
-    position: relative;
-}
-
-.pista-titulo {
-    color: #805B00;
-
-    font-weight: 1000;
-
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
-
-    margin-bottom: 20px;
-}
-
-.pergaminho {
-    background:
-        linear-gradient(
-            90deg,
-            #E6C776,
-            var(--papel),
-            #E6C776
-        );
-
-    border: 5px solid #C49A43;
-
-    border-radius: 8px;
-
-    padding: 45px 35px;
-
-    box-shadow:
-        0 20px 50px rgba(80,50,0,.25);
-
-    transform: rotate(-1deg);
-
-    position: relative;
-}
-
-.pista-numero {
-    font-weight: 1000;
-    color: #805B00;
-}
-
-.bússola {
-    font-size: 4rem;
-    margin: 10px;
-}
-
-#texto-pista {
-    font-family: Georgia, serif;
-
-    font-size: clamp(1.3rem, 4vw, 2rem);
-
-    line-height: 1.6;
-
-    color: #4B3512;
-
-    margin: 20px 0;
-}
-
-.linha-pista {
-    height: 2px;
-    background: #B38A39;
-    margin: 20px;
-}
-
-.dica-pista {
-    font-size: .85rem;
-    color: #806C45;
-}
-
-.gato-pista {
-    position: absolute;
-
-    right: -30px;
-    top: -55px;
-
-    font-size: 4rem;
-
-    z-index: 5;
-}
-
-
-/* =====================================================
-   TELA FINAL
-===================================================== */
-
-#tela-final {
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #5144B8,
-            #6C5CE7,
-            #0984E3
+            #fff1b8,
+            #d7bc6b
         );
 
     padding: 20px;
 }
 
-.resultado-card {
-    width: min(600px, 100%);
+.pergaminho-grande {
+    width: min(650px, 95%);
 
-    background: white;
+    background: #fff5d6;
 
-    border-radius: 35px;
+    border: 5px solid #c49a43;
+
+    border-radius: 10px;
 
     padding: 40px 25px;
 
+    text-align: center;
+
     box-shadow:
-        0 25px 60px rgba(0,0,0,.2);
+        0 20px 50px rgba(70,45,0,.25);
 }
 
-#icone-resultado {
-    font-size: 5rem;
+.pergaminho-grande h1 {
+    color: #795500;
+
+    margin-bottom: 20px;
 }
 
-#titulo-resultado {
+.numero-pista {
+    font-weight: 900;
+
+    color: #795500;
+}
+
+.bussola {
+    font-size: 4rem;
+
+    margin: 15px;
+}
+
+#texto-pista {
+    font-family: Georgia, serif;
+
+    font-size: 1.5rem;
+
+    line-height: 1.6;
+
+    margin: 20px 0 30px;
+
+    color: #493715;
+}
+
+.gato-pista {
+    position: absolute;
+
+    top: 10%;
+
+    right: 10%;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+#final {
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4834d4,
+            #6c5ce7,
+            #0984e3
+        );
+}
+
+.final-card {
+    width: min(600px, 95%);
+
+    background: white;
+
+    border-radius: 30px;
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.25);
+}
+
+.trofeu {
+    font-size: 4rem;
+}
+
+.final-card h1 {
     color: var(--roxo);
-
-    font-size: clamp(1.8rem, 5vw, 2.7rem);
 
     margin: 15px 0;
 }
 
-#mensagem-resultado {
-    color: #636E72;
-
-    margin-bottom: 25px;
-}
-
-.resultado-numeros {
+.resultado {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
-    gap: 12px;
+    gap: 10px;
+
+    margin: 25px 0;
 }
 
-.resultado-item {
-    background: var(--fundo);
+.resultado div {
+    background: #f5f4ff;
 
-    padding: 18px;
+    padding: 15px;
 
-    border-radius: 18px;
+    border-radius: 15px;
 }
 
-.resultado-item strong {
+.resultado strong {
     display: block;
 
     color: var(--roxo);
 
-    font-size: 1.7rem;
+    font-size: 1.6rem;
 }
 
-.resultado-item span {
-    color: #636E72;
-    font-size: .85rem;
-}
-
-.tesouro-conquistado {
-    font-size: 2rem;
-    margin: 25px 0;
-}
-
-.botoes-final {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.resultado span {
+    color: #636e72;
 }
 
 
-/* =====================================================
-   VOLTAR
-===================================================== */
-
-.voltar {
-    margin: 15px 0 25px;
-}
-
-
-/* =====================================================
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 footer {
     text-align: center;
 
-    padding: 12px;
+    padding: 10px;
 
-    color: #636E72;
+    color: #636e72;
 
     font-size: .8rem;
 }
 
 
-/* =====================================================
-   RESPONSIVIDADE
-===================================================== */
+/* =========================
+   CELULAR
+========================= */
 
-@media (max-width: 800px) {
-
-    .cabecalho-mapa {
-        flex-direction: column;
-        text-align: center;
-    }
+@media (max-width: 650px) {
 
     .mapa {
-        height: 650px;
-        min-height: 650px;
+        height: 600px;
     }
 
-    .ilha {
-        width: 115px;
-        min-height: 105px;
+    .botao-ilha {
+        width: 100px;
+
+        min-height: 95px;
     }
 
-    .ilha-emoji {
-        font-size: 1.7rem;
-    }
-
-    .ilha strong {
+    .botao-ilha strong {
         font-size: .75rem;
     }
 
-    .gato-mapa {
-        font-size: 3rem;
+    .botao-ilha small {
+        font-size: .6rem;
     }
 
-}
+    .ilha1 {
+        left: 8%;
+    }
 
+    .ilha2 {
+        left: 50%;
+    }
 
-@media (max-width: 600px) {
+    .ilha3 {
+        right: 5%;
+    }
 
-    .mapa {
-        width: 96%;
-        height: 680px;
+    .ilha4 {
+        left: 12%;
+        top: 38%;
+    }
+
+    .ilha5 {
+        left: 50%;
+        top: 38%;
+    }
+
+    .ilha6 {
+        right: 5%;
+        top: 42%;
+    }
+
+    .ilha7 {
+        left: 30%;
+    }
+
+    .ilha8 {
+        right: 15%;
     }
 
     #alternativas {
         grid-template-columns: 1fr;
     }
 
-    .card-pergunta {
-        padding: 25px 18px;
-    }
-
-    .gato-jogo {
-        font-size: 2.5rem;
-        right: 5px;
-        bottom: 0;
-    }
-
-    .gato-jogo span {
+    .gato-pergunta {
         display: none;
-    }
-
-    .resultado-numeros {
-        grid-template-columns: 1fr;
-    }
-
-    .cabecalho-mapa h1 {
-        font-size: 2rem;
-    }
-
-}
-
-
-@media (max-width: 430px) {
-
-    .ilha {
-        width: 95px;
-        min-height: 90px;
-        padding: 5px;
-    }
-
-    .ilha-emoji {
-        font-size: 1.4rem;
-    }
-
-    .ilha strong {
-        font-size: .65rem;
-    }
-
-    .ilha small {
-        font-size: .6rem;
-    }
-
-    .tesouro-final {
-        right: 2%;
     }
 
 }
