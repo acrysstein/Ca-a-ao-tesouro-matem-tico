@@ -7,10 +7,8 @@
     --orange: #f97316;
     --green: #22c55e;
     --red: #ef4444;
-
     --cream: #fff8e7;
     --paper: #fef3c7;
-
     --text: #172033;
     --white: #ffffff;
 }
@@ -23,169 +21,94 @@
 
 body {
     min-height: 100vh;
-
     font-family: "Fredoka", sans-serif;
-
     color: var(--text);
-
     overflow-x: hidden;
-
     background:
         radial-gradient(circle at 20% 20%, #60a5fa 0 3px, transparent 4px),
         radial-gradient(circle at 80% 30%, #facc15 0 4px, transparent 5px),
         linear-gradient(135deg, #172554, #1e40af 50%, #4c1d95);
-
     background-size: 70px 70px, 100px 100px, 100% 100%;
 }
 
-
-/* =========================
-   TELAS
-========================= */
-
 .screen {
     display: none;
-
     min-height: 100vh;
-
     position: relative;
-
     padding-bottom: 70px;
 }
 
 .screen.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
-
-/* =========================
-   TELA INICIAL
-========================= */
-
-#startScreen {
-    display: none;
-
-    align-items: center;
+#startScreen.active, #clueScreen.active, #winScreen.active {
     justify-content: center;
-
+    align-items: center;
     padding: 25px;
 }
 
-#startScreen.active {
-    display: flex;
-}
-
-.start-card {
+.start-card, .clue-card, .win-card {
     width: min(600px, 95%);
-
     padding: 45px 35px;
-
     text-align: center;
-
     border: 5px solid #fbbf24;
-
     border-radius: 35px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.97),
-            rgba(255,248,231,.98)
-        );
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.35),
-        0 0 0 10px rgba(255,255,255,.08);
-
+    background: linear-gradient(145deg, rgba(255,255,255,.97), rgba(255,248,231,.98));
+    box-shadow: 0 30px 80px rgba(0,0,0,.35), 0 0 0 10px rgba(255,255,255,.08);
     animation: appear .7s ease;
 }
 
-.logo-icon {
+.logo-icon, .clue-icon {
     font-size: 75px;
-
     animation: floating 2.5s ease-in-out infinite;
 }
 
-.logo-area h1 {
+.logo-area h1, .win-card h1 {
     font-family: "Luckiest Guy", cursive;
-
-    font-size: clamp(70px, 15vw, 125px);
-
+    font-size: clamp(60px, 12vw, 100px);
     letter-spacing: 5px;
-
     color: var(--blue);
-
-    text-shadow:
-        4px 4px 0 var(--yellow),
-        8px 8px 0 rgba(0,0,0,.1);
+    text-shadow: 4px 4px 0 var(--yellow), 8px 8px 0 rgba(0,0,0,.1);
 }
 
 .subtitle {
     font-size: 27px;
-
     font-weight: 700;
-
     color: var(--purple);
 }
 
 .pirate {
     font-size: 70px;
-
     margin: 20px 0;
 }
 
 .intro {
     max-width: 470px;
-
     margin: 0 auto 30px;
-
     font-size: 18px;
-
     line-height: 1.6;
-
     color: #475569;
 }
 
 .small-text {
     margin-top: 18px;
-
     color: #64748b;
-
     font-size: 14px;
 }
 
-
-/* =========================
-   BOTÕES
-========================= */
-
 .main-button {
     border: none;
-
     padding: 17px 30px;
-
     border-radius: 18px;
-
-    background: linear-gradient(
-        135deg,
-        #facc15,
-        #f97316
-    );
-
+    background: linear-gradient(135deg, #facc15, #f97316);
     color: #431407;
-
     font-family: inherit;
-
     font-size: 19px;
-
     font-weight: 700;
-
     cursor: pointer;
-
-    box-shadow:
-        0 7px 0 #c2410c,
-        0 12px 25px rgba(249,115,22,.3);
-
+    box-shadow: 0 7px 0 #c2410c, 0 12px 25px rgba(249,115,22,.3);
     transition: .2s;
 }
 
@@ -195,51 +118,29 @@ body {
 
 .main-button:active {
     transform: translateY(4px);
-
-    box-shadow:
-        0 3px 0 #c2410c;
+    box-shadow: 0 3px 0 #c2410c;
 }
-
-
-/* =========================
-   HEADER
-========================= */
 
 .game-header {
     min-height: 75px;
-
     padding: 12px 25px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 15px;
-
     background: rgba(15,23,42,.92);
-
     border-bottom: 3px solid rgba(255,255,255,.15);
-
     color: white;
-
     position: sticky;
-
     top: 0;
-
     z-index: 20;
-
     backdrop-filter: blur(10px);
 }
 
 .brand {
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
     font-size: 23px;
 }
 
@@ -249,195 +150,73 @@ body {
 
 .brand strong {
     font-family: "Luckiest Guy", cursive;
-
     letter-spacing: 2px;
-
     color: #facc15;
 }
 
 .stats {
     display: flex;
-
     gap: 12px;
 }
 
 .stat {
     padding: 9px 15px;
-
     background: rgba(255,255,255,.12);
-
     border-radius: 14px;
-
     font-weight: 700;
-
     white-space: nowrap;
 }
 
-
-/* =========================
-   MAPA
-========================= */
-
 .map-container {
     width: min(1100px, 94%);
-
     margin: auto;
-
     padding: 30px 0;
 }
 
 .map-title {
     text-align: center;
-
     color: white;
-
     margin-bottom: 20px;
 }
 
 .map-title h2 {
     font-family: "Luckiest Guy", cursive;
-
     font-size: clamp(35px, 6vw, 60px);
-
     color: #facc15;
-
     letter-spacing: 2px;
-
     text-shadow: 4px 4px 0 #92400e;
 }
 
-.map-title p {
-    font-size: 17px;
-}
-
-
-/* MAPA FÍSICO */
-
 .treasure-map {
-    min-height: 670px;
-
+    min-height: 600px;
     position: relative;
-
     overflow: hidden;
-
     border-radius: 35px;
-
     border: 8px solid #92400e;
-
     background-color: #f5d58a;
-
-    background-image:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(120,53,15,.15) 0 5px,
-            transparent 6px
-        ),
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(120,53,15,.12) 0 8px,
-            transparent 9px
-        ),
-        linear-gradient(
-            rgba(255,255,255,.12),
-            rgba(120,53,15,.08)
-        );
-
-    box-shadow:
-        inset 0 0 60px rgba(120,53,15,.25),
-        0 25px 60px rgba(0,0,0,.35);
+    box-shadow: inset 0 0 60px rgba(120,53,15,.25), 0 25px 60px rgba(0,0,0,.35);
 }
-
-
-/* CAMINHOS */
-
-.map-path {
-    position: absolute;
-
-    height: 12px;
-
-    border-radius: 20px;
-
-    background: #92400e;
-
-    opacity: .55;
-
-    transform-origin: left center;
-}
-
-.path-1 {
-    width: 260px;
-
-    top: 240px;
-    left: 210px;
-
-    transform: rotate(20deg);
-}
-
-.path-2 {
-    width: 260px;
-
-    top: 360px;
-    left: 430px;
-
-    transform: rotate(-20deg);
-}
-
-.path-3 {
-    width: 230px;
-
-    top: 290px;
-    left: 570px;
-
-    transform: rotate(25deg);
-}
-
-.path-4 {
-    width: 200px;
-
-    top: 390px;
-    left: 700px;
-
-    transform: rotate(-15deg);
-}
-
-
-/* PONTOS DO MAPA */
 
 .map-point {
     position: absolute;
-
-    width: 150px;
-    min-height: 135px;
-
+    width: 140px;
+    min-height: 130px;
     border: 4px solid #78350f;
-
     border-radius: 50%;
-
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 4px;
-
     font-family: inherit;
-
     cursor: pointer;
-
     transition: .3s;
-
     z-index: 5;
 }
 
 .map-point.unlocked {
     background: #facc15;
-
-    box-shadow:
-        0 8px 0 #a16207,
-        0 15px 25px rgba(0,0,0,.2);
+    box-shadow: 0 8px 0 #a16207, 0 15px 25px rgba(0,0,0,.2);
 }
 
 .map-point.unlocked:hover {
@@ -446,697 +225,200 @@ body {
 
 .map-point.locked {
     background: #94a3b8;
-
     color: #475569;
-
     cursor: not-allowed;
-
     filter: grayscale(.5);
 }
 
-.point-icon {
-    font-size: 38px;
-}
+.point-icon { font-size: 34px; }
+.point-name { font-size: 13px; font-weight: 700; }
+.point-status { font-size: 11px; font-weight: 700; }
 
-.point-name {
-    font-size: 14px;
-
-    font-weight: 700;
-}
-
-.point-status {
-    font-size: 11px;
-
-    font-weight: 700;
-}
-
-
-/* POSIÇÕES */
-
-#sector1 {
-    top: 90px;
-    left: 60px;
-}
-
-#sector2 {
-    top: 160px;
-    left: 310px;
-}
-
-#sector3 {
-    top: 70px;
-    right: 280px;
-}
-
-#sector4 {
-    bottom: 80px;
-    left: 430px;
-}
-
-#sector5 {
-    top: 360px;
-    right: 70px;
-}
-
-
-/* TESOURO */
+#sector1 { top: 70px; left: 50px; }
+#sector2 { top: 150px; left: 290px; }
+#sector3 { top: 60px; right: 250px; }
+#sector4 { bottom: 80px; left: 400px; }
+#sector5 { top: 320px; right: 60px; }
 
 .treasure {
     position: absolute;
-
-    right: 50px;
-    bottom: 50px;
-
+    right: 40px;
+    bottom: 40px;
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     color: #78350f;
-
     font-weight: 700;
-
     font-size: 18px;
-
-    animation: treasurePulse 1.7s infinite;
 }
-
-.treasure:first-letter {
-    font-size: 70px;
-}
-
-
-/* GATO */
 
 .map-cat {
     position: absolute;
-
     bottom: 30px;
     left: 40px;
-
     font-size: 65px;
-
     z-index: 10;
-
-    animation: catWalk 3s ease-in-out infinite;
 }
-
-
-/* =========================
-   QUIZ
-========================= */
 
 .quiz-container {
     width: min(850px, 94%);
-
     margin: auto;
-
-    padding: 50px 0;
-
+    padding: 30px 0;
     position: relative;
 }
 
 .quiz-card {
     position: relative;
-
     z-index: 5;
-
     background: #fffdf5;
-
     border: 5px solid #facc15;
-
     border-radius: 30px;
-
     padding: 30px;
-
-    box-shadow:
-        0 25px 60px rgba(0,0,0,.35);
-
+    box-shadow: 0 25px 60px rgba(0,0,0,.35);
     text-align: center;
-
     animation: appear .5s ease;
 }
 
 .question-top {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
-    gap: 10px;
-
     margin-bottom: 25px;
 }
 
 .question-badge {
     padding: 8px 14px;
-
     border-radius: 12px;
-
     background: #dbeafe;
-
     color: #1d4ed8;
-
     font-weight: 700;
-
     font-size: 13px;
-}
-
-.question-lives {
-    letter-spacing: 2px;
 }
 
 .cat-question {
     font-size: 60px;
-
     margin-bottom: 10px;
-
     animation: floating 2s ease-in-out infinite;
 }
 
 .question-text {
-    min-height: 100px;
-
+    min-height: 80px;
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
-    font-size: clamp(23px, 4vw, 31px);
-
+    font-size: clamp(20px, 4vw, 28px);
     font-weight: 700;
-
-    line-height: 1.35;
-
     margin-bottom: 25px;
 }
 
-
-/* RESPOSTAS */
-
 .answers {
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
-
     gap: 14px;
 }
 
 .answer-button {
     border: 3px solid #bfdbfe;
-
     border-radius: 17px;
-
     padding: 17px;
-
     background: white;
-
     font-family: inherit;
-
     font-size: 19px;
-
     font-weight: 600;
-
     cursor: pointer;
-
     transition: .2s;
 }
 
 .answer-button:hover {
     border-color: #2563eb;
-
     background: #eff6ff;
-
     transform: translateY(-3px);
 }
 
 .answer-button.correct {
     background: #bbf7d0;
-
     border-color: #16a34a;
-
     color: #14532d;
 }
 
 .answer-button.wrong {
     background: #fecaca;
-
     border-color: #dc2626;
-
     color: #7f1d1d;
 }
 
-.answer-button:disabled {
-    cursor: default;
-}
-
-
-/* FEEDBACK */
-
 .feedback {
-    min-height: 45px;
-
-    margin: 20px 0 5px;
-
+    min-height: 35px;
+    margin: 15px 0;
     font-size: 18px;
-
     font-weight: 700;
 }
-
-.feedback.correct {
-    color: #16a34a;
-}
-
-.feedback.wrong {
-    color: #dc2626;
-}
-
-
-/* PRÓXIMO */
 
 .next-button {
     border: none;
-
     padding: 13px 25px;
-
     border-radius: 15px;
-
     background: var(--blue);
-
     color: white;
-
     font-family: inherit;
-
     font-size: 17px;
-
     font-weight: 700;
-
     cursor: pointer;
-
-    transition: .2s;
 }
 
-.next-button:hover {
-    background: #1d4ed8;
-
-    transform: scale(1.04);
-}
-
-.hidden {
-    display: none !important;
-}
-
-
-/* SÍMBOLOS */
+.hidden { display: none !important; }
 
 .math-decoration {
     position: absolute;
-
-    color: rgba(255,255,255,.7);
-
+    color: rgba(255,255,255,.3);
     font-size: 70px;
-
     font-weight: 700;
-
-    animation: floating 3s ease-in-out infinite;
 }
-
-.math-1 {
-    left: 2%;
-    top: 10%;
-}
-
-.math-2 {
-    right: 2%;
-    top: 20%;
-
-    animation-delay: .5s;
-}
-
-.math-3 {
-    left: 4%;
-    bottom: 15%;
-
-    animation-delay: 1s;
-}
-
-.math-4 {
-    right: 4%;
-    bottom: 20%;
-
-    animation-delay: 1.5s;
-}
-
-.math-5 {
-    left: 48%;
-    top: 3%;
-
-    animation-delay: 2s;
-}
-
-
-/* =========================
-   PISTA
-========================= */
-
-#clueScreen {
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 25px;
-}
-
-#clueScreen.active {
-    display: flex;
-}
-
-.clue-card {
-    width: min(650px, 95%);
-
-    padding: 45px 30px;
-
-    background: #fffdf5;
-
-    border-radius: 30px;
-
-    border: 5px solid #facc15;
-
-    text-align: center;
-
-    box-shadow: 0 30px 70px rgba(0,0,0,.4);
-
-    animation: appear .5s ease;
-}
-
-.clue-icon {
-    font-size: 75px;
-
-    animation: floating 2s infinite;
-}
-
-.clue-card h2 {
-    margin: 15px 0;
-
-    color: #7c3aed;
-
-    font-family: "Luckiest Guy", cursive;
-
-    font-size: 35px;
-}
-
-.clue-card p {
-    color: #64748b;
-
-    margin-bottom: 20px;
-}
+.math-1 { left: -40px; top: 10%; }
+.math-2 { right: -40px; top: 20%; }
+.math-3 { left: -40px; bottom: 15%; }
+.math-4 { right: -40px; bottom: 20%; }
 
 .clue {
     padding: 25px;
-
     margin-bottom: 25px;
-
     border-radius: 20px;
-
     background: #fef3c7;
-
     border: 3px dashed #d97706;
-
     color: #78350f;
-
     font-size: 23px;
-
     font-weight: 700;
 }
-
-
-/* =========================
-   VITÓRIA
-========================= */
-
-#winScreen {
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 25px;
-}
-
-#winScreen.active {
-    display: flex;
-}
-
-.win-card {
-    width: min(650px, 95%);
-
-    padding: 40px 30px;
-
-    text-align: center;
-
-    background: #fffdf5;
-
-    border-radius: 35px;
-
-    border: 6px solid #facc15;
-
-    box-shadow: 0 30px 80px rgba(0,0,0,.45);
-
-    animation: appear .7s ease;
-}
-
-.confetti {
-    font-size: 55px;
-}
-
-.treasure-big {
-    font-size: 100px;
-
-    animation: treasurePulse 1.5s infinite;
-}
-
-.win-card h1 {
-    font-family: "Luckiest Guy", cursive;
-
-    color: #f59e0b;
-
-    font-size: clamp(35px, 7vw, 60px);
-
-    text-shadow: 3px 3px 0 #78350f;
-
-    margin-bottom: 10px;
-}
-
-.final-score {
-    margin: 25px auto;
-
-    padding: 18px;
-
-    max-width: 300px;
-
-    background: #dbeafe;
-
-    border-radius: 20px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 5px;
-}
-
-.final-score strong {
-    font-size: 40px;
-
-    color: #2563eb;
-}
-
-.final-message {
-    margin-bottom: 25px;
-
-    font-size: 20px;
-
-    font-weight: 700;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
 
 footer {
     position: fixed;
-
     bottom: 0;
     left: 0;
-
     width: 100%;
-
     padding: 8px;
-
     text-align: center;
-
     color: rgba(255,255,255,.7);
-
     font-size: 12px;
-
-    background: rgba(15,23,42,.5);
-
+    background: rgba(15,23,42,.8);
     z-index: 30;
 }
 
-
-/* =========================
-   ANIMAÇÕES
-========================= */
-
 @keyframes floating {
-
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-}
-
-@keyframes treasurePulse {
-
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.12);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
 }
 
 @keyframes appear {
-
-    from {
-        opacity: 0;
-
-        transform: scale(.92) translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform: scale(1) translateY(0);
-    }
+    from { opacity: 0; transform: scale(.92) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
 }
-
-@keyframes catWalk {
-
-    0%, 100% {
-        transform: translateX(0) rotate(-3deg);
-    }
-
-    50% {
-        transform: translateX(20px) rotate(3deg);
-    }
-}
-
-
-/* =========================
-   RESPONSIVIDADE
-========================= */
-
-@media (max-width: 800px) {
-
-    .treasure-map {
-        min-height: 850px;
-    }
-
-    #sector1 {
-        top: 50px;
-        left: 30px;
-    }
-
-    #sector2 {
-        top: 230px;
-        right: 30px;
-        left: auto;
-    }
-
-    #sector3 {
-        top: 410px;
-        left: 30px;
-        right: auto;
-    }
-
-    #sector4 {
-        bottom: 190px;
-        right: 30px;
-        left: auto;
-    }
-
-    #sector5 {
-        top: 600px;
-        right: auto;
-        left: calc(50% - 75px);
-    }
-
-    .path-1,
-    .path-2,
-    .path-3,
-    .path-4 {
-        display: none;
-    }
-
-    .treasure {
-        right: 20px;
-        bottom: 20px;
-    }
-
-    .map-cat {
-        left: 15px;
-        bottom: 15px;
-    }
-}
-
 
 @media (max-width: 600px) {
-
-    .game-header {
-        padding: 10px;
-
-        flex-wrap: wrap;
-    }
-
-    .brand {
-        font-size: 18px;
-    }
-
-    .stats {
-        gap: 5px;
-    }
-
-    .stat {
-        padding: 7px 9px;
-    }
-
-    .quiz-card {
-        padding: 20px 15px;
-    }
-
-    .answers {
-        grid-template-columns: 1fr;
-    }
-
-    .question-text {
-        min-height: 130px;
-    }
-
-    .math-decoration {
-        font-size: 45px;
-    }
-
-    .map-point {
-        width: 135px;
-        min-height: 125px;
-    }
+    .answers { grid-template-columns: 1fr; }
+    .treasure-map { min-height: 750px; }
+    #sector1 { top: 30px; left: 20px; }
+    #sector2 { top: 170px; right: 20px; left: auto; }
+    #sector3 { top: 310px; left: 20px; }
+    #sector4 { top: 450px; right: 20px; left: auto; }
+    #sector5 { top: 590px; left: 50%; transform: translateX(-50%); right: auto; }
 }
