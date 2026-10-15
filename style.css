@@ -193,7 +193,11 @@ body {
     overflow: hidden;
     border-radius: 35px;
     border: 8px solid #92400e;
-    background-color: #f5d58a;
+    
+    /* Imagem de fundo estilizada de mapa do tesouro */
+    background-image: url('images.jpeg');
+    background-size: cover;
+    background-position: center;
     box-shadow: inset 0 0 60px rgba(120,53,15,.25), 0 25px 60px rgba(0,0,0,.35);
 }
 
